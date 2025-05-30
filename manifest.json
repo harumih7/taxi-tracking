@@ -1,6 +1,6 @@
 {
-    "name": "Mi App Taxi",
-    "short_name": "TaxiApp",
+    "name": "Tracking Taxi",
+    "short_name": "TaxiTrack",
     "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#ffffff",
