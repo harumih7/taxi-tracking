@@ -334,11 +334,10 @@ function mostrarHistorial(filtros = {}) {
       <p><strong>Hora Inicio:</strong> ${viaje.horaInicio}</p>
       <p><strong>Hora Fin:</strong> ${viaje.horaFin}</p>
       <p><strong>Tiempo Espera:</strong> ${viaje.tiempoEspera}</p>
-      <button onclick="eliminarViaje(${index})">Eliminar</button>
+      <button class="btnEliminar" data-index="${index}">Eliminar</button>
       <hr>
     `;
-
-    listaDiv.appendChild(div);
+    lista.appendChild(div);
   });
 
   // Asignar evento a todos los botones eliminar
@@ -354,7 +353,6 @@ function eliminarViaje(index) {
   viajes.splice(index, 1); // eliminar viaje del arreglo
   localStorage.setItem('viajesTaxi', JSON.stringify(viajes)); // actualizar localStorage
   mostrarHistorial(); // refrescar listado
-
 }
 
 // Evento para aplicar filtro
