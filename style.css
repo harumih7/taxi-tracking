@@ -1,0 +1,169 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #f002b4, #ab00d6);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
+  
+  #container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 700px;
+    padding: 30px 40px 40px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  #container:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  }
+  
+  h1, h2 {
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f002b4, #ab00d6);
+    color: white;
+    font-weight: 600;
+    padding: 14px 24px;
+    font-size: 1.1rem;
+    box-shadow: 0 6px 15px rgba(252, 92, 125, 0.4);
+    transition: all 0.3s ease;
+    margin: 10px 8px;
+    min-width: 180px;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  button:hover {
+    background: linear-gradient(135deg,  #d402f0, #810285);
+    box-shadow: 0 8px 20px rgba(230, 69, 105, 0.6);
+    transform: translateY(-2px);
+  }
+  
+  button:disabled {
+    background: #ccc;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  #home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  label {
+    display: block;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: #444;
+  }
+  
+  input[type="number"],
+  input[type="text"],
+  input[type="time"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    outline-offset: 2px;
+  }
+  
+  input[type="number"]:focus,
+  input[type="text"]:focus,
+  input[type="time"]:focus {
+    border-color: #6a82fb;
+    outline: none;
+    box-shadow: 0 0 8px rgba(106, 130, 251, 0.6);
+  }
+  
+  main, section {
+    margin-top: 30px;
+  }
+  
+  /* Map */
+  #map {
+    height: 400px;
+    margin-top: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(106, 130, 251, 0.3);
+  }
+  
+  /* Historial viajes */
+  #listaViajes {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 6px;
+  }
+  
+  .viaje-item {
+    background: #f0f4ff;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    padding: 18px 20px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(106, 130, 251, 0.15);
+    transition: background-color 0.3s ease;
+  }
+  
+  .viaje-item:hover {
+    background-color: #e0e8ff;
+  }
+  
+  .viaje-item button {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: #ff6b6b;
+    box-shadow: 0 4px 8px rgba(255, 107, 107, 0.4);
+    padding: 6px 10px;
+    font-weight: 700;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+  }
+  
+  .viaje-item button:hover {
+    background-color: #d45050;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    #container {
+      padding: 20px 20px 30px;
+    }
+  
+    button {
+      min-width: 100%;
+      margin: 8px 0;
+    }
+  }
+  

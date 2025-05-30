@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taxi Kilómetros App</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="container">
+
+  <!-- PÁGINA INICIAL -->
+  <div id="home">
+    <h1>Taxi Kilómetros App</h1>
+    <button id="btnManual">Registro de viaje MANUAL</button>
+    <button id="btnAuto">Registro de viaje AUTOMÁTICO</button>
+    <button id="btnHistorial">Ver historial</button>
+  </div>
+
+  <!-- FORMULARIO MANUAL -->
+  <div id="manual" class="hidden">
+    <h2>Registro Manual</h2>
+    <label for="mKilometraje">Kilometraje (km):</label>
+    <input type="number" id="mKilometraje" min="0" step="0.1" />
+
+    <label for="mPersonas">Cantidad de personas:</label>
+    <input type="number" id="mPersonas" min="1" />
+
+    <label for="mLocalInicio">Local de inicio:</label>
+    <input type="text" id="mLocalInicio" />
+
+    <label for="mHoraInicio">Hora de inicio:</label>
+    <input type="time" id="mHoraInicio" />
+
+    <label for="mHoraFin">Hora de fin:</label>
+    <input type="time" id="mHoraFin" />
+
+    <label for="mTiempoEspera">Tiempo de espera (minutos):</label>
+    <input type="number" id="mTiempoEspera" min="0" />
+
+    <button id="guardarManual">Guardar viaje manual</button>
+    <button id="volverHome1">Volver</button>
+  </div>
+
+  <!-- FORMULARIO AUTOMÁTICO -->
+  <div id="automatico" class="hidden">
+    <h2>Registro Automático</h2>
+    <button id="btnInicioViaje">Iniciar viaje</button>
+    <button id="btnFinViaje" disabled>Finalizar viaje</button>
+
+    <div id="autoForm" class="hidden">
+      <label for="aTiempoEspera">Tiempo de espera (minutos):</label>
+      <input type="number" id="aTiempoEspera" min="0" />
+
+      <label for="aPersonas">Cantidad de personas:</label>
+      <input type="number" id="aPersonas" min="1" />
+
+      <label for="aLocalInicio">Local de inicio:</label>
+      <input type="text" id="aLocalInicio" />
+
+      <button id="guardarAuto">Guardar viaje automático</button>
+      <button id="volverHome2">Volver</button>
+    </div>
+    <p id="distanciaActual">Distancia: 0.00 km</p>
+    <div id="map" class="hidden"></div>
+  </div>
+
+  <!-- HISTORIAL -->
+  <div id="historial" class="hidden">
+    <h2>Historial de viajes</h2>
+    <div id="filtrosHistorial">
+      <label>Fecha desde: <input type="datetime-local" id="filtroFechaDesde"></label>
+      <label>Fecha hasta: <input type="datetime-local" id="filtroFechaHasta"></label>
+      <label>Local de inicio: <input type="text" id="filtroLocalInicio" placeholder="Ej. Centro"></label>
+      <button id="btnAplicarFiltro">Aplicar filtro</button>
+      <button id="btnExportarCSV">Exportar CSV</button>
+    </div>    
+    <div id="listaViajes">
+    </div>
+    <button id="volverHome3">Volver</button>
+  </div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
+
