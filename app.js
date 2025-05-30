@@ -327,25 +327,31 @@ function mostrarHistorial(filtros = {}) {
     div.className = 'viaje-item';
 
     div.innerHTML = `
-      <p><strong>Tipo:</strong> ${viaje.tipo}</p>
-      <p><strong>Kilometraje:</strong> ${viaje.kilometraje}</p>
-      <p><strong>Personas:</strong> ${viaje.personas}</p>
-      <p><strong>Local Inicio:</strong> ${viaje.localInicio}</p>
-      <p><strong>Hora Inicio:</strong> ${viaje.horaInicio}</p>
-      <p><strong>Hora Fin:</strong> ${viaje.horaFin}</p>
-      <p><strong>Tiempo Espera:</strong> ${viaje.tiempoEspera}</p>
-      <button class="btnEliminar" data-index="${index}">Eliminar</button>
-      <hr>
+      <strong>Tipo:</strong> ${viaje.tipo}<br>
+      <strong>Kilometraje:</strong> ${viaje.kilometraje} km<br>
+      <strong>Personas:</strong> ${viaje.personas}<br>
+      <strong>Local de inicio:</strong> ${viaje.localInicio}<br>
+      <strong>Hora inicio:</strong> ${viaje.horaInicio}<br>
+      <strong>Hora fin:</strong> ${viaje.horaFin}<br>
+      <strong>Tiempo espera:</strong> ${viaje.tiempoEspera} minutos<br>
+      <strong>Fecha registro:</strong> ${new Date(viaje.fechaRegistro).toLocaleString()}
     `;
-    lista.appendChild(div);
-  });
 
-  // Asignar evento a todos los botones eliminar
-  document.querySelectorAll('.btnEliminar').forEach(btn => {
-    btn.onclick = function() {
-      const idx = this.getAttribute('data-index');
-      eliminarViaje(idx);
-    }
+     // Botón eliminar
+     const contenedorBtn = document.createElement('div');
+     contenedorBtn.className = 'btn-container';
+ 
+     const btnEliminar = document.createElement('button');
+     btnEliminar.className = 'btnEliminar';
+     btnEliminar.textContent = '✖';
+     btnEliminar.onclick = function () {
+       eliminarViaje(index);
+     };
+ 
+     contenedorBtn.appendChild(btnEliminar);
+     div.appendChild(contenedorBtn);
+
+    listaDiv.appendChild(div);
   });
 }
 
@@ -353,6 +359,7 @@ function eliminarViaje(index) {
   viajes.splice(index, 1); // eliminar viaje del arreglo
   localStorage.setItem('viajesTaxi', JSON.stringify(viajes)); // actualizar localStorage
   mostrarHistorial(); // refrescar listado
+
 }
 
 // Evento para aplicar filtro

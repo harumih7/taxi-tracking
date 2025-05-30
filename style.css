@@ -46,7 +46,7 @@
     font-weight: 600;
     padding: 14px 24px;
     font-size: 1.1rem;
-    box-shadow: 0 6px 15px rgba(252, 92, 125, 0.4);
+    box-shadow: 0 6px 15px rgba(0, 10, 2, 0.6);
     transition: all 0.3s ease;
     margin: 10px 8px;
     min-width: 180px;
@@ -56,7 +56,7 @@
   
   button:hover {
     background: linear-gradient(135deg,  #89f002, #f39e00);
-    box-shadow: 0 8px 20px rgba(230, 69, 105, 0.6);
+    box-shadow: 0 8px 20px rgba(0, 10, 2, 0.6);
     transform: translateY(-2px);
   }
   
@@ -137,33 +137,34 @@
   .viaje-item:hover {
     background-color: #e0e8ff;
   }
-  
-  .viaje-item button {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    background-color: #ff6b6b;
-    box-shadow: 0 4px 8px rgba(255, 107, 107, 0.4);
-    padding: 6px 10px;
-    font-weight: 700;
-    border-radius: 10px;
-    transition: background-color 0.3s ease;
-    font-size: 0.9rem;
+  .btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+    width: 100%;
   }
   
-  .viaje-item button:hover {
-    background-color: #d45050;
+  .btnEliminar {
+    background-color: #d00;
+    color: white;
+    border: none;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
   }
   
-  /* Responsive */
-  @media (max-width: 480px) {
-    #container {
-      padding: 20px 20px 30px;
-    }
-  
-    button {
-      min-width: 100%;
-      margin: 8px 0;
-    }
+  .btnEliminar:hover {
+    background-color: #a00;
   }
   
+  
+
+
+
