@@ -1,11 +1,12 @@
 {
     "name": "Tracking Taxi",
     "short_name": "TaxiTrack",
+    "description": "App para registrar viajes de taxi con seguimiento GPS.",
     "start_url": "./index.html",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#0078d7",
-    "description": "App para registrar viajes de taxi con tracking y kilometraje",
+     "background_color": "#ffffff",
+     "theme_color": "#2196f3",
+    "orientation": "portrait",
     "icons": [
       {
         "src": "icon-192.png",
