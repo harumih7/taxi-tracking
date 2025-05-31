@@ -233,45 +233,57 @@ function actualizarRutaEnMapa() {
   }
 }
 
-// Función para obtener distancia real con OpenRouteService
 async function obtenerDistanciaORS(coords) {
   if(coords.length < 2) return 0;
 
-  // Transformar coords a formato [lon, lat]
-  const coordinates = coords.map(c => [c[1], c[0]]);
+  // Filtrar coordenadas repetidas (opcional, pero recomendable)
+  const filteredCoords = coords.filter((c, i, arr) => {
+    if (i === 0) return true;
+    const prev = arr[i-1];
+    return c[0] !== prev[0] || c[1] !== prev[1];
+  });
+
+  // Cambiar formato a [lon, lat]
+  const coordinates = filteredCoords.map(c => [c[1], c[0]]);
 
   const body = {
     coordinates: coordinates,
-    units: "km",
-    // Perfil puede ser "driving-car", "cycling-regular", "foot-walking", etc.
-    profile: "driving-car",
   };
 
-  // Cambia esto por tu API key gratuita de OpenRouteService
-  const apiKey = '5b3ce3597851110001cf62483786c332b1f2414da7c9826f75d5042c';
+  const apiKey = '5b3ce3597851110001cf62483786c332b1f2414da7c9826f75d5042c'; // <- Cambia aquí por tu API Key válida
 
-  const response = await fetch('https://api.openrouteservice.org/v2/directions/driving-car/geojson', {
-    method: 'POST',
-    headers: {
-      'Authorization': apiKey,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  });
+  try {
+    const response = await fetch('https://api.openrouteservice.org/v2/directions/driving-car/geojson', {
+      method: 'POST',
+      headers: {
+        'Authorization': apiKey,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
 
-  if(!response.ok){
-    throw new Error(`HTTP error! status: ${response.status}`);
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+    }
+
+    const data = await response.json();
+
+    // Distancia en metros
+    const distanciaMetros = data.features[0].properties.summary.distance;
+    const distanciaKm = distanciaMetros / 1000;
+
+    return distanciaKm;
+
+  } catch (error) {
+    console.error('Error calculando distancia real:', error.message);
+    throw error; // para que tu código que llama sepa que hubo error
   }
-
-  const data = await response.json();
-
-  // La distancia está en metros, convertimos a km
-  const distanciaMetros = data.features[0].properties.summary.distance;
-  const distanciaKm = distanciaMetros / 1000;
-
-  return distanciaKm;
 }
 
+obtenerDistanciaORS(rutaCoords)
+  .then(distancia => console.log("Distancia (km):", distancia))
+  .catch(error => console.log("Error calculando distancia:", error.message));
 
 
 
